@@ -1,9 +1,16 @@
 package com.cos.aop.web;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +54,10 @@ public class UserController {
 	@CrossOrigin
 	// http://localhost:8080/user
 	@PostMapping("/user")
-	public CommonDto<String> save(@RequestBody JoinRequestDto dto) {
+	public CommonDto<?> save(@Valid @RequestBody JoinRequestDto dto, BindingResult bindingResult)  {
+		
+		
+		
 		System.out.println("save");
 		userRepository.save(dto);
 		
@@ -62,7 +72,10 @@ public class UserController {
 	}
 
 	@PutMapping("/user/{id}")
-	public void CommonDto(@PathVariable int id, @RequestBody UpdateRequestDto dto) {
+	public CommonDto update	(@PathVariable int id, @Valid @RequestBody UpdateRequestDto dto, BindingResult bindingResult) {
+		
+		
+		
 		System.out.println("update");
 		userRepository.update(id, dto);
 		return new CommonDto<>(HttpStatus.OK.value());

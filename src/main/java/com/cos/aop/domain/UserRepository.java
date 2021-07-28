@@ -19,4 +19,16 @@ public class UserRepository {
 		
 		return new User(1, "ssar", "1234", "11111111111");
 	}
+	
+	public void save(JoinRequestDto dto) {
+		System.out.println("insert");
+	}
+	
+	public void delete(int id) {
+		System.out.println("delete");
+	}
+	
+	public void update(int id, UpdateRequestDto dto) {
+		System.out.println("update");
+	}
 }

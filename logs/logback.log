@@ -1,0 +1,1 @@
+[2021-07-28 18:55:24:1442401][http-nio-8080-exec-2] WARN  com.cos.aop.config.BindingAdvice - com.cos.aop.web.UserController.save() -> 필드 :username need
